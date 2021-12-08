@@ -4,7 +4,7 @@ import {
   Heading,
   Divider
 } from '@chakra-ui/react'
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 
 import { Item } from './components/Item'
 import { AddItemInput } from './components/AddItemInput'
@@ -25,7 +25,7 @@ export function App() {
       return setError(`Item "${checkItemExists}" already exists`)
     }
 
-    setItems([...items, title])
+    setItems(state => [...state, title])
     setError(null)
   }
 

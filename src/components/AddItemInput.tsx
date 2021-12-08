@@ -43,7 +43,7 @@ export function AddItemInput({ addItemToList, error = null }: AddItemInputProps)
             borderTopRightRadius={0}
             borderBottomRightRadius={0}
             value={value}
-            onChange={(e) => setValue(e.target.value)}
+            onChange={e => setValue(e.target.value)}
           />
 
           <Button
