@@ -11,7 +11,11 @@ import { AddItemInput } from './components/AddItemInput'
 import { Footer } from './components/Footer'
 
 export function App() {
-  
+  const [items, setItems] = useState<string[]>([])
+
+  function addItemToList(title: string) {
+    setItems([...items, `Item ${items.length} - ${title}`])
+  }
 
   return (
     <Flex
@@ -40,10 +44,12 @@ export function App() {
 
           <Divider borderColor="gray.700" />
 
-          <AddItemInput />
+          <AddItemInput addItemToList={addItemToList} />
 
           <Stack as="section" spacing="10" py="4" px="10">
-            <Item title="item 0" />
+            {items.map(item => (
+              <Item key={item} title={item} />
+            ))}
           </Stack>
         </Stack>
       </Flex>

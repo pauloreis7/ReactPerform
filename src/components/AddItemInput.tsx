@@ -9,9 +9,12 @@ import {
 import { useState } from 'react'
 import { FiPlus } from 'react-icons/fi'
 
+type AddItemInputProps = {
+  addItemToList: (title: string) => void
+}
 
-export function AddItemInput() {
-
+export function AddItemInput({ addItemToList }: AddItemInputProps) {
+  const [value, setValue] = useState<string>('')
 
   return (
     <Flex alignItems="flex-end">
@@ -36,7 +39,8 @@ export function AddItemInput() {
           flex={1}
           borderTopRightRadius={0}
           borderBottomRightRadius={0}
-
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
         />
       </FormControl>
 
@@ -46,7 +50,7 @@ export function AddItemInput() {
         borderBottomLeftRadius={0}
         cursor="pointer"
         rightIcon={<Icon as={FiPlus} fontSize="18" />}
-
+        onClick={() => addItemToList(value)}
       >
         Add
       </Button>
