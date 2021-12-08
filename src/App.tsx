@@ -10,16 +10,24 @@ import {
   FormLabel,
   Button,
   Icon,
+  IconButton,
+  useBreakpointValue 
 } from '@chakra-ui/react'
 import { FiPlus, FiShoppingBag } from 'react-icons/fi'
 
 export function App() {
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    md: true,
+  })
+
   return (
     <Flex
       w="100%"
       h="100%"
+      minH="100vh"
       flexDir="column"
-      justify="center"
+      justify="space-between"
       align="center"
       px="10"
       pt="8"
@@ -82,56 +90,24 @@ export function App() {
                 Item 0 - 1
               </Text>
 
-              <Button
-                colorScheme="green"
-                size="sm"
-                cursor="pointer"
-                leftIcon={<Icon as={FiShoppingBag} fontSize="18" />}
-              >
-                Add to wish list
-              </Button>
-            </Flex>
-            <Flex align="center" justify="space-between">
-              <Text fontSize="md" fontWeight="600">
-                Item 0 - 1
-              </Text>
-
-              <Button
-                colorScheme="green"
-                size="sm"
-                cursor="pointer"
-                leftIcon={<Icon as={FiShoppingBag} fontSize="18" />}
-              >
-                Add to wish list
-              </Button>
-            </Flex>
-            <Flex align="center" justify="space-between">
-              <Text fontSize="md" fontWeight="600">
-                Item 0 - 1
-              </Text>
-
-              <Button
-                colorScheme="green"
-                size="sm"
-                cursor="pointer"
-                leftIcon={<Icon as={FiShoppingBag} fontSize="18" />}
-              >
-                Add to wish list
-              </Button>
-            </Flex>
-            <Flex align="center" justify="space-between">
-              <Text fontSize="md" fontWeight="600">
-                Item 0 - 1
-              </Text>
-
-              <Button
-                colorScheme="green"
-                size="sm"
-                cursor="pointer"
-                leftIcon={<Icon as={FiShoppingBag} fontSize="18" />}
-              >
-                Add to wish list
-              </Button>
+              { isWideVersion ? (
+                <Button
+                  colorScheme="green"
+                  size="sm"
+                  cursor="pointer"
+                  leftIcon={<Icon as={FiShoppingBag} fontSize="18" />}
+                >
+                  Add to wish list
+                </Button>
+              ) : (
+                <IconButton
+                  aria-label="Add to wish list"
+                  colorScheme="green"
+                  size="md"
+                  cursor="pointer"
+                  icon={<Icon as={FiShoppingBag} fontSize="20" />}
+                />
+              ) }
             </Flex>
           </Stack>
         </Stack>
