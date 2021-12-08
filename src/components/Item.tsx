@@ -6,7 +6,7 @@ import {
   IconButton,
   useBreakpointValue, 
 } from '@chakra-ui/react'
-import { useState } from 'react'
+import { useState, memo } from 'react'
 import { FiShoppingBag } from 'react-icons/fi'
 
 type ItemProps = {
@@ -14,7 +14,7 @@ type ItemProps = {
   itemNumber: number;
 }
 
-export function Item({ title, itemNumber }: ItemProps) {
+function ItemComponent({ title, itemNumber }: ItemProps) {
   const [quantity, setQuantity] = useState<number>(0)
 
   const isWideVersion = useBreakpointValue({
@@ -51,3 +51,5 @@ export function Item({ title, itemNumber }: ItemProps) {
     </Flex>
   )
 }
+
+export const Item = memo(ItemComponent)

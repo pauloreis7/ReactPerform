@@ -1,20 +1,9 @@
 import { 
-  Flex,
-  Stack, 
-  Heading,
-  Text,
-  Divider, 
-  Input, 
-  FormControl,
-  FormLabel,
-  Button,
-  Icon,
-  IconButton,
-  useBreakpointValue, 
+  Flex, 
 } from '@chakra-ui/react'
-import { FiPlus, FiShoppingBag } from 'react-icons/fi'
+import { memo } from 'react'
 
-export function Footer() {
+function FooterComponent() {
   return (
     <Flex
       as="footer"
@@ -30,3 +19,5 @@ export function Footer() {
     </Flex>
   )
 }
+
+export const Footer = memo(FooterComponent)

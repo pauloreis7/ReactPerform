@@ -14,7 +14,7 @@ export function App() {
   const [items, setItems] = useState<string[]>([])
   const [error, setError] = useState<string | null>(null)
 
-  function addItemToList(title: string) {
+  const addItemToList = useCallback((title: string) => {
     if(title === '') {
       return setError('Provide a title to the item')
     }
@@ -27,7 +27,7 @@ export function App() {
 
     setItems(state => [...state, title])
     setError(null)
-  }
+  }, [items])
 
   return (
     <Flex
