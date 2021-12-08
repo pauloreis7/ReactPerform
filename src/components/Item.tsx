@@ -10,9 +10,10 @@ import { FiShoppingBag } from 'react-icons/fi'
 
 type ItemProps = {
   title: string;
+  itemNumber: number;
 }
 
-export function Item({ title }: ItemProps) {
+export function Item({ title, itemNumber }: ItemProps) {
   const isWideVersion = useBreakpointValue({
     base: false,
     md: true,
@@ -21,7 +22,7 @@ export function Item({ title }: ItemProps) {
   return (
     <Flex align="center" justify="space-between">
       <Text fontSize="md" fontWeight="600">
-        {title}
+        Item {itemNumber} - {title}
       </Text>
 
       { isWideVersion ? (

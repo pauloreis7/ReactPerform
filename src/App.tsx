@@ -12,9 +12,21 @@ import { Footer } from './components/Footer'
 
 export function App() {
   const [items, setItems] = useState<string[]>([])
+  const [error, setError] = useState<string | null>(null)
 
   function addItemToList(title: string) {
-    setItems([...items, `Item ${items.length} - ${title}`])
+    if(title === '') {
+      return setError('Provide a title to the item')
+    }
+
+    const checkItemExists = items.find(item => item === title)
+
+    if(checkItemExists) {
+      return setError(`Item "${checkItemExists}" already exists`)
+    }
+
+    setItems([...items, title])
+    setError(null)
   }
 
   return (
@@ -44,11 +56,11 @@ export function App() {
 
           <Divider borderColor="gray.700" />
 
-          <AddItemInput addItemToList={addItemToList} />
+          <AddItemInput addItemToList={addItemToList} error={error} />
 
           <Stack as="section" spacing="10" py="4" px="10">
-            {items.map(item => (
-              <Item key={item} title={item} />
+            {items.map((item, i) => (
+              <Item key={item} title={item} itemNumber={i + 1} />
             ))}
           </Stack>
         </Stack>
