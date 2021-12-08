@@ -4,10 +4,11 @@ import {
   Heading,
   Divider
 } from '@chakra-ui/react'
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useMemo } from 'react'
 
 import { Item } from './components/Item'
 import { AddItemInput } from './components/AddItemInput'
+import { CountItemsWithOne } from './components/CountItemsWithOne'
 import { Footer } from './components/Footer'
 
 export function App() {
@@ -27,6 +28,12 @@ export function App() {
 
     setItems(state => [...state, title])
     setError(null)
+  }, [items])
+
+  const countItemsWithOne = useMemo(() => {
+    return {
+      count: items.filter((_, i) => String(i + 1).includes('1')).length
+    }
   }, [items])
 
   return (
@@ -64,6 +71,8 @@ export function App() {
             ))}
           </Stack>
         </Stack>
+
+        <CountItemsWithOne countItemsWithOne={countItemsWithOne}  />
       </Flex>
 
       <Footer />

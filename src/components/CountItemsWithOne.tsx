@@ -1,5 +1,6 @@
 import { 
   Flex,
+  Box,
   Text
 } from '@chakra-ui/react'
 
@@ -18,7 +19,7 @@ export function CountItemsWithOne({ countItemsWithOne }: CountItemsWithOneProps)
       justify="center"
       align="center"
     >
-      <Text display="flex" fontSize="lg">
+      <Box display="flex" fontSize="lg">
         Items number with one: 
         <Text
           ml="2"
@@ -27,7 +28,7 @@ export function CountItemsWithOne({ countItemsWithOne }: CountItemsWithOneProps)
         >
           {countItemsWithOne.count}
         </Text>
-      </Text>
+      </Box>
     </Flex>
   )
 }
