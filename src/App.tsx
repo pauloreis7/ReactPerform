@@ -1,15 +1,154 @@
-import { Flex } from '@chakra-ui/react'
+import { 
+  Flex,
+  Box,
+  Stack, 
+  Heading,
+  Text,
+  Divider, 
+  Input, 
+  FormControl,
+  FormLabel,
+  Button,
+  Icon,
+} from '@chakra-ui/react'
+import { FiPlus, FiShoppingBag } from 'react-icons/fi'
 
 export function App() {
   return (
     <Flex
-      w="100vw"
-      h="100vh"
+      w="100%"
+      h="100%"
+      flexDir="column"
       justify="center"
       align="center"
-      p="10"
+      px="10"
+      pt="8"
     >
-      <h1>Hello World</h1>
+      <Flex
+        as="main"
+        width="100%"
+        maxWidth={720}
+        bg="gray.800"
+        p="8"
+        borderRadius={8}
+        flexDir="column"
+      >
+        <Stack spacing="6">
+          <Heading as="h1" size="lg" textAlign="center">
+            Manage your items
+          </Heading>
+
+          <Divider borderColor="gray.700" />
+
+          <Flex alignItems="flex-end">
+            <FormControl>
+              <FormLabel
+                fontWeight="400" 
+                color="gray.300"
+                htmlFor="item"
+              >
+                Type the new item 
+              </FormLabel>
+              
+              <Input 
+                name="item"
+                id="item"
+                focusBorderColor="green.500"
+                bgColor="gray.900"
+                variant="filled"
+                _hover={{
+                  bgColor: 'gray.900'
+                }}
+                flex={1}
+                borderTopRightRadius={0}
+                borderBottomRightRadius={0}
+              />
+            </FormControl>
+
+            <Button
+              colorScheme="green"
+              borderTopLeftRadius={0}
+              borderBottomLeftRadius={0}
+              cursor="pointer"
+              rightIcon={<Icon as={FiPlus} fontSize="18" />}
+            >
+              Add
+            </Button>
+          </Flex>
+
+          <Stack as="section" spacing="10" py="4" px="10">
+            <Flex align="center" justify="space-between">
+              <Text fontSize="md" fontWeight="600">
+                Item 0 - 1
+              </Text>
+
+              <Button
+                colorScheme="green"
+                size="sm"
+                cursor="pointer"
+                leftIcon={<Icon as={FiShoppingBag} fontSize="18" />}
+              >
+                Add to wish list
+              </Button>
+            </Flex>
+            <Flex align="center" justify="space-between">
+              <Text fontSize="md" fontWeight="600">
+                Item 0 - 1
+              </Text>
+
+              <Button
+                colorScheme="green"
+                size="sm"
+                cursor="pointer"
+                leftIcon={<Icon as={FiShoppingBag} fontSize="18" />}
+              >
+                Add to wish list
+              </Button>
+            </Flex>
+            <Flex align="center" justify="space-between">
+              <Text fontSize="md" fontWeight="600">
+                Item 0 - 1
+              </Text>
+
+              <Button
+                colorScheme="green"
+                size="sm"
+                cursor="pointer"
+                leftIcon={<Icon as={FiShoppingBag} fontSize="18" />}
+              >
+                Add to wish list
+              </Button>
+            </Flex>
+            <Flex align="center" justify="space-between">
+              <Text fontSize="md" fontWeight="600">
+                Item 0 - 1
+              </Text>
+
+              <Button
+                colorScheme="green"
+                size="sm"
+                cursor="pointer"
+                leftIcon={<Icon as={FiShoppingBag} fontSize="18" />}
+              >
+                Add to wish list
+              </Button>
+            </Flex>
+          </Stack>
+        </Stack>
+      </Flex>
+
+      <Flex
+        as="footer"
+        w="100%"
+        h="9vh"
+        mt="2"
+        justify="center"
+        align="center"
+        fontSize="sm"
+        color="gray.300"
+      >
+        Copyright &copy; Paulo Reis. All rights reserved.
+      </Flex>
     </Flex>
   )
 }
