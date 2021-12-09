@@ -1,8 +1,12 @@
 import { 
-  Flex,
   Box,
   Text
 } from '@chakra-ui/react'
+
+import { 
+  MotionFlex,
+  fadeInUpForms
+} from '../animations/GlobalAnimations'
 
 type CountItemsWithOneProps = {
   countItemsWithOne: {
@@ -12,12 +16,13 @@ type CountItemsWithOneProps = {
 
 export function CountItemsWithOne({ countItemsWithOne }: CountItemsWithOneProps) {
   return (
-    <Flex 
+    <MotionFlex 
       w="100%"
       h="3rem"
       mt="3"
       justify="center"
       align="center"
+      variants={fadeInUpForms}
     >
       <Box display="flex" fontSize="lg">
         Items number with one: 
@@ -29,6 +34,6 @@ export function CountItemsWithOne({ countItemsWithOne }: CountItemsWithOneProps)
           {countItemsWithOne.count}
         </Text>
       </Box>
-    </Flex>
+    </MotionFlex>
   )
 }

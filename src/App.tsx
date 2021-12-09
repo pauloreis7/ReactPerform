@@ -11,6 +11,13 @@ import { AddItemInput } from './components/AddItemInput'
 import { CountItemsWithOne } from './components/CountItemsWithOne'
 import { Footer } from './components/Footer'
 
+import { 
+  MotionFlex,
+  MotionStack,
+  containerAnimation,
+  fadeInUpForms
+} from './animations/GlobalAnimations'
+
 export function App() {
   const [items, setItems] = useState<string[]>([])
   const [error, setError] = useState<string | null>(null)
@@ -47,7 +54,7 @@ export function App() {
       px="10"
       pt="8"
     >
-      <Flex
+      <MotionFlex
         as="main"
         width="100%"
         maxWidth={720}
@@ -55,8 +62,11 @@ export function App() {
         p="8"
         borderRadius={8}
         flexDir="column"
+        variants={containerAnimation}
+        initial="initial"
+        animate="animate"
       >
-        <Stack spacing="6">
+        <MotionStack spacing="6" variants={fadeInUpForms}>
           <Heading as="h1" size="lg" textAlign="center">
             Manage your items
           </Heading>
@@ -67,13 +77,18 @@ export function App() {
 
           <Stack as="section" spacing="10" py="4" px="10">
             {items.map((item, i) => (
-              <Item key={item} title={item} itemNumber={i + 1} />
+              <Item 
+                key={item} 
+                title={item} 
+                itemNumber={i + 1} 
+                index={i} 
+              />
             ))}
           </Stack>
-        </Stack>
+        </MotionStack>
 
         <CountItemsWithOne countItemsWithOne={countItemsWithOne}  />
-      </Flex>
+      </MotionFlex>
 
       <Footer />
     </Flex>

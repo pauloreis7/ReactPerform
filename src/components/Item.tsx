@@ -9,12 +9,15 @@ import {
 import { useState, memo } from 'react'
 import { FiShoppingBag } from 'react-icons/fi'
 
+import { MotionFlex, dropList } from '../animations/GlobalAnimations'
+
 type ItemProps = {
   title: string;
   itemNumber: number;
+  index: number;
 }
 
-function ItemComponent({ title, itemNumber }: ItemProps) {
+function ItemComponent({ title, itemNumber, index }: ItemProps) {
   const [quantity, setQuantity] = useState<number>(0)
 
   const isWideVersion = useBreakpointValue({
@@ -23,7 +26,12 @@ function ItemComponent({ title, itemNumber }: ItemProps) {
   })
 
   return (
-    <Flex align="center" justify="space-between">
+    <MotionFlex 
+      align="center" 
+      justify="space-between"
+      variants={dropList}
+      custom={index}
+    >
       <Text fontSize="md" fontWeight="600">
         Item {itemNumber} - {title} / {quantity}
       </Text>
@@ -48,7 +56,7 @@ function ItemComponent({ title, itemNumber }: ItemProps) {
           onClick={() => setQuantity(state => state + 1)}
         />
       ) }
-    </Flex>
+    </MotionFlex>
   )
 }
 
